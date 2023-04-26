@@ -8,7 +8,7 @@ interface Props {
 
 const Layout = ({ children }: Props) => {
 	return (
-		<div className="min-h-screen flex">
+		<div className="min-h-screen flex bg-white">
 			<Head>
 				<title>Mainstack Dashboard</title>
 				<meta name="description" content="Customer's dashboard on Mainstack" />
@@ -16,7 +16,7 @@ const Layout = ({ children }: Props) => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<nav className="w-56 flex-none bg-indigo-200 px-2 ">
+			<nav className="w-[302px] h-[900px] flex-none border-r">
 				<Sidebar />
 			</nav>
 
