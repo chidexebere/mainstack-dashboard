@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const Sidebar = () => (
 	<div className="text-[#4D5760]">
-		<div className="mt-[32px] ml-[54px]">
+		<div className="mt-9 ml-[54px]">
 			<Image
 				src="/mainstack-logo.svg"
 				alt="Mainstack Logo"
@@ -13,11 +13,15 @@ const Sidebar = () => (
 				priority
 			/>
 		</div>
-		<div className="mt-[46px] ">
+		<div className="mt-10">
 			<Navbar />
 		</div>
-		<div className="ml-[60px] mt-[196px] mb-[60px] mr-4">
-			<UserProfile name="Blessing Daniels" imagePath="/image.svg" />
+		<div className="ml-[60px] mt-[176px] mb-[60px] mr-4">
+			<UserProfile
+				firstname="Blessing"
+				lastname="Daniels"
+				imagePath="/image.svg"
+			/>
 		</div>
 	</div>
 );

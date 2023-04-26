@@ -65,9 +65,7 @@ const Navbar = () => (
 			/>
 		))}
 		<div>
-			<h4 className="ml-[60px] mt-[6px] mb-[22px] text-xs uppercase">
-				others 1
-			</h4>
+			<h4 className="ml-[60px] mt-3 mb-4 text-xs uppercase">others 1</h4>
 			{others1.map((item) => (
 				<NavLink
 					key={item.title}
@@ -78,9 +76,7 @@ const Navbar = () => (
 			))}
 		</div>
 		<div>
-			<h4 className="ml-[60px] mt-[6px] mb-[22px] text-xs uppercase">
-				others 2
-			</h4>
+			<h4 className="ml-[60px] mt-3 mb-4 text-xs uppercase">others 2</h4>
 			{others2.map((item) => (
 				<NavLink
 					key={item.title}

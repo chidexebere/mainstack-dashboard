@@ -12,7 +12,7 @@ const NavLink = ({ title, slug, icon, isActive }: Props) => (
 	<li
 		className={cn(
 			isActive ? 'border-l-2 border-[#FF5403]' : 'border-0',
-			'pl-[60px] mb-[28px] pt-1.5 pb-0.5'
+			'pl-[60px] mb-5 pt-1 pb-0.5'
 		)}
 	>
 		<Link href={slug} className="flex">
