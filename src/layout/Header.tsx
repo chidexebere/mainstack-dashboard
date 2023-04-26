@@ -3,10 +3,8 @@ interface Props {
 }
 
 const Header = ({ title }: Props) => (
-	<div className=" mb-10">
-		<p className="text-3xl font-extrabold tracking-tight text-slate-900">
-			{title}
-		</p>
+	<div className="pl-[60px] py-[22px]">
+		<h2 className="text-xl font-extrabold text-[#131316]">{title}</h2>
 	</div>
 );
 
