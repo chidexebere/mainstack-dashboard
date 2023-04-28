@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import {
 	AreaChart,
 	Area,
@@ -22,9 +22,9 @@ const AreaChartSample = ({ areaChartData, xKey, yKey }: Props) => {
 				data={areaChartData}
 				margin={{
 					top: 10,
-					right: 30,
-					left: 0,
-					bottom: 0,
+					right: 24,
+					left: 24,
+					bottom: 46,
 				}}
 			>
 				<defs>
@@ -34,11 +34,16 @@ const AreaChartSample = ({ areaChartData, xKey, yKey }: Props) => {
 					</linearGradient>
 				</defs>
 				<CartesianGrid strokeDasharray="3 3" opacity={0.5} vertical={false} />
-				<XAxis dataKey={xKey} />
-				<YAxis />
+				<XAxis
+					dataKey={xKey}
+					axisLine={false}
+					tickLine={false}
+					padding={{ left: 60, right: 58 }}
+					tickMargin={24}
+				/>
+				<YAxis axisLine={false} tickLine={false} tickMargin={24} />
 				<Tooltip />
 				<Area
-					type="monotone"
 					dataKey={yKey}
 					stroke="#FF5403"
 					fillOpacity={1}

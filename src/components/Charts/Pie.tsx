@@ -1,24 +1,8 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import Image from 'next/image';
-import {
-	PieChart,
-	Pie,
-	Cell,
-	ResponsiveContainer,
-	Legend,
-	Symbols,
-	Surface,
-} from 'recharts';
+import { PieChart, Pie, Cell, Legend, Symbols, Surface } from 'recharts';
 
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
-
-const renderLegendText = (text: string) => {
-	return (
-		<span style={{ color: '#596579', fontWeight: 500, padding: '10px' }}>
-			{text}
-		</span>
-	);
-};
+const COLORS = ['#599EEA', '#844FF6', '#0FB77A', '#FAB70A', '#F09468'];
 
 const renderLegend = (
 	data: any[],
@@ -27,7 +11,8 @@ const renderLegend = (
 ) => {
 	const payload = data.map((item, index) => ({
 		id: item.name,
-		value: `${item.name} ${item.percent}%`,
+		value: `${item.name}`,
+		percent: `${item.percent}%`,
 		color: COLORS[index % COLORS.length],
 		flag: flags && flags[index % flags.length],
 		social: socials && socials[index % socials.length],
@@ -36,9 +21,12 @@ const renderLegend = (
 	return (
 		<ul>
 			{payload.map((entry, index) => (
-				<li key={`item-${index}`} className="flex items-center">
+				<li
+					key={`item-${index}`}
+					className="flex items-center gap-x-2 ml-6 mb-5 text-base text-[#131316]"
+				>
 					{entry.flag && (
-						<span className={`fi fi-${entry.flag} rounded`}></span>
+						<span className={`fi fi-${entry.flag} w-5 rounded`}></span>
 					)}
 					{entry.social && (
 						<Image
@@ -49,9 +37,9 @@ const renderLegend = (
 							height={20}
 						/>
 					)}
-
-					{entry.value}
-					<Surface width={10} height={10}>
+					<span>{entry.value}</span>
+					<span className="font-semibold">{entry.percent}</span>
+					<Surface width={10} height={10} className="w-3 h-3">
 						<Symbols cx={5} cy={5} type="circle" size={50} fill={entry.color} />
 					</Surface>
 				</li>
@@ -68,32 +56,28 @@ interface Props {
 
 const PieChartSample = ({ pieChartData, flags, socials }: Props) => {
 	return (
-		<ResponsiveContainer width="100%" height={400}>
-			<PieChart width={800} height={400}>
-				<Legend
-					content={renderLegend(pieChartData, flags, socials)}
-					layout="vertical"
-					verticalAlign="middle"
-					formatter={renderLegendText}
-					align="left"
-				/>
-				<Pie
-					data={pieChartData}
-					cx={120}
-					cy={200}
-					innerRadius={50}
-					outerRadius={80}
-					fill="#8884d8"
-					paddingAngle={0}
-					dataKey="value"
-					stroke="none"
-				>
-					{pieChartData.map((entry, index) => (
-						<Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-					))}
-				</Pie>
-			</PieChart>
-		</ResponsiveContainer>
+		<PieChart width={500} height={300}>
+			<Legend
+				content={renderLegend(pieChartData, flags, socials)}
+				layout="vertical"
+				verticalAlign="middle"
+				align="left"
+			/>
+			<Pie
+				data={pieChartData}
+				cx="50%"
+				cy="50%"
+				innerRadius={50}
+				outerRadius={80}
+				fill="#8884d8"
+				dataKey="value"
+				stroke="none"
+			>
+				{pieChartData.map((index) => (
+					<Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+				))}
+			</Pie>
+		</PieChart>
 	);
 };
 

@@ -6,6 +6,7 @@ import {
 	getCountryCode,
 	getSocialIcons,
 } from './api/helper';
+import { MdOutlineInfo } from 'react-icons/md';
 
 const days = [
 	'1 Day',
@@ -14,51 +15,6 @@ const days = [
 	'30 Days',
 	'All Time',
 	'Custom Date',
-];
-
-const sampleData = [
-	{
-		name: 'Page A',
-		uv: 4000,
-		pv: 2400,
-		amt: 2400,
-	},
-	{
-		name: 'Page B',
-		uv: 3000,
-		pv: 1398,
-		amt: 2210,
-	},
-	{
-		name: 'Page C',
-		uv: 2000,
-		pv: 9800,
-		amt: 2290,
-	},
-	{
-		name: 'Page D',
-		uv: 2780,
-		pv: 3908,
-		amt: 2000,
-	},
-	{
-		name: 'Page E',
-		uv: 1890,
-		pv: 4800,
-		amt: 2181,
-	},
-	{
-		name: 'Page F',
-		uv: 2390,
-		pv: 3800,
-		amt: 2500,
-	},
-	{
-		name: 'Page G',
-		uv: 3490,
-		pv: 4300,
-		amt: 2100,
-	},
 ];
 
 const fetcher: Fetcher<ApiDataType> = (apiURL: string) =>
@@ -83,11 +39,13 @@ export default function Home() {
 						<h1 className="mb-2.5 text-2xl font-extrabold text-[#131316]">
 							Good morning, Blessing ⛅️
 						</h1>
-						<span className="text-sm text-[#31373D]">
+						<p className="text-sm text-[#31373D]">
 							Check out your dashboard summary.
-						</span>
+						</p>
 					</div>
-					<button className="text-sm text-[#FF5403]">View analytics</button>
+					<button className="text-sm text-[#FF5403] hover:text-amber-700">
+						View analytics
+					</button>
 				</div>
 			</section>
 			<div className="my-6 flex gap-x-3 items-center">
@@ -95,30 +53,55 @@ export default function Home() {
 					<button
 						key={index}
 						type="button"
-						className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+						className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-3xl text-sm text-[#31373D] font-medium px-4 py-3"
 					>
 						{day}
 					</button>
 				))}
 			</div>
 			{data && (
-				<Area
-					areaChartData={formatToAreaDataType(graph_data)}
-					xKey="month"
-					yKey="views"
-				/>
+				<section className="mb-6 border rounded-xl text-[#131316]">
+					<div className=" mt-8 mb-2 mr-6 flex items-center justify-between">
+						<h3 className="ml-6 text-[18px] font-extrabold">Page Views</h3>
+						<MdOutlineInfo className="text-[#31373D]" size={15} />
+					</div>
+					<p className="ml-6 mb-6 text-sm text-[#4D5760]">All time</p>
+					<h1 className="ml-6 mb-8 text-5xl font-extrabold">500</h1>
+					<Area
+						areaChartData={formatToAreaDataType(graph_data)}
+						xKey="month"
+						yKey="views"
+					/>
+				</section>
 			)}
 			{data && (
-				<div className="flex items-center">
-					<Pie
-						pieChartData={formatToPieDataType(top_locations)}
-						flags={getCountryCode(top_locations)}
-					/>
-
-					<Pie
-						pieChartData={formatToPieDataType(top_sources)}
-						socials={getSocialIcons(top_sources)}
-					/>
+				<div className="flex items-center justify-between gap-x-4 mb-11">
+					<section className="w-full border rounded-xl">
+						<div className=" mx-6 mt-8 flex items-center justify-between">
+							<h3 className="text-[18px] font-extrabold">Top Locations</h3>
+							<button className="text-sm text-[#FF5403] hover:text-amber-700">
+								View full reports
+							</button>
+						</div>
+						<Pie
+							pieChartData={formatToPieDataType(top_locations)}
+							flags={getCountryCode(top_locations)}
+						/>
+					</section>
+					<section className="w-full border rounded-xl">
+						<div className=" mx-6 mt-8 flex items-center justify-between">
+							<h3 className="text-[18px] font-extrabold">
+								Top Referral source
+							</h3>
+							<button className="text-sm text-[#FF5403] hover:text-amber-700">
+								View full reports
+							</button>
+						</div>
+						<Pie
+							pieChartData={formatToPieDataType(top_sources)}
+							socials={getSocialIcons(top_sources)}
+						/>
+					</section>
 				</div>
 			)}
 		</div>
