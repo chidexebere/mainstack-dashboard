@@ -66,7 +66,10 @@ const PageViews = ({ graphData }: Props) => {
 			<section className="mb-6 border rounded-xl text-[#131316]">
 				<div className=" mt-8 mb-2 mr-6 flex items-center justify-between">
 					<h3 className="ml-6 text-[18px] font-extrabold">Page Views</h3>
-					<MdOutlineInfo className="text-[#31373D]" size={15} />
+					<MdOutlineInfo
+						className="text-[#31373D] cursor-pointer hover:text-gray-800 "
+						size={15}
+					/>
 				</div>
 				<p className="ml-6 mb-6 text-sm text-[#4D5760]">{viewDays}</p>
 				<h1 className="ml-6 mb-8 text-5xl font-extrabold">{totalViews}</h1>

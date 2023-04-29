@@ -17,7 +17,7 @@ const UserProfile = ({ firstname, lastname, imagePath }: Props) => (
 			height={32}
 		/>
 		<span className="text-sm font-semibold mr-[53px]">{`${firstname} ${lastname}`}</span>
-		<MdOutlineMoreHoriz />
+		<MdOutlineMoreHoriz className="cursor-pointer rounded-full hover:text-gray-800 hover:border hover:bg-gray-100" />
 	</div>
 );
 
