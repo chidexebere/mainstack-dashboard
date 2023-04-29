@@ -73,7 +73,7 @@ const PieChartSample = ({ pieChartData, flags, socials }: Props) => {
 				dataKey="value"
 				stroke="none"
 			>
-				{pieChartData.map((index) => (
+				{pieChartData.map((entry, index) => (
 					<Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
 				))}
 			</Pie>

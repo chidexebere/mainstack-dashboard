@@ -3,3 +3,7 @@ export { default as NavLink } from './nav/NavLink';
 export { default as UserProfile } from './UserProfile';
 export { default as Area } from './Charts/Area';
 export { default as Pie } from './Charts/Pie';
+export { default as PageViews } from './PageViews';
+export { default as PageStatistics } from './PageStatistics';
+export { default as Button } from './Button';
+export { default as Info } from './Info';
