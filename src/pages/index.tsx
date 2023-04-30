@@ -16,7 +16,7 @@ const Home = () => {
 	const { graph_data, top_locations, top_sources } = data;
 
 	return (
-		<div className="px-[60px]">
+		<div className="">
 			<section className="mt-6">
 				<div className="flex justify-between">
 					<div>

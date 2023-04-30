@@ -51,7 +51,7 @@ const PageViews = ({ graphData }: Props) => {
 
 	return (
 		<>
-			<div className="my-6 flex gap-x-3 items-center">
+			<div className="py-6 flex gap-x-3 items-center overflow-x-auto">
 				{days.map((day, index) => (
 					<Button
 						key={`${day.daysInString}${index}`}
