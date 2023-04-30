@@ -1,5 +1,5 @@
 import { MdOutlineInfo } from 'react-icons/md';
-import Area from './Charts/Area';
+import Area from './charts/Area';
 import { formatToAreaDataType } from '@/pages/api/helper';
 import { useState } from 'react';
 import Button from './Button';

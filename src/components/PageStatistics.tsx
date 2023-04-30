@@ -3,7 +3,7 @@ import {
 	getCountryCode,
 	getSocialIcons,
 } from '@/pages/api/helper';
-import Pie from './Charts/Pie';
+import Pie from './charts/Pie';
 
 interface Props {
 	topLocations: TopLocationDataType[];
