@@ -23,3 +23,8 @@ type ApiDataType = {
 	top_locations: TopLocationDataType[];
 	top_sources: TopSourceDataType[];
 };
+
+type AppContextState = {
+	headerTitle: string;
+	setHeaderTitle: (headerTitle: string) => void;
+};

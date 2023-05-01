@@ -10,6 +10,7 @@ import {
 } from 'react-icons/md';
 import { AiOutlineHourglass } from 'react-icons/ai';
 import NavLink from './NavLink';
+import { useStateContext } from '@/contexts/ContextProvider';
 
 const navigation = [
 	{ title: 'Dashboard', iconName: 'MdOutlineDashboard', slug: './' },
@@ -53,40 +54,57 @@ const stringToComponent = (iconName: string) => {
 			return null;
 	}
 };
-const Navbar = () => (
-	<ul className="text-base">
-		{navigation.map((item) => (
-			<NavLink
-				key={item.title}
-				title={item.title}
-				slug={item.slug}
-				icon={stringToComponent(item.iconName)}
-				isActive={true}
-			/>
-		))}
-		<div>
-			<h4 className="ml-[60px] mt-3 mb-4 text-xs uppercase">others 1</h4>
-			{others1.map((item) => (
+const Navbar = () => {
+	const { headerTitle, setHeaderTitle } = useStateContext();
+
+	const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+		const { value } = e.currentTarget as HTMLButtonElement;
+		setHeaderTitle(value);
+	};
+
+	return (
+		<ul className="text-base">
+			{navigation.map((item) => (
 				<NavLink
 					key={item.title}
 					title={item.title}
 					slug={item.slug}
 					icon={stringToComponent(item.iconName)}
+					isActive={item.title === headerTitle}
+					value={item.title}
+					handleClick={handleClick}
 				/>
 			))}
-		</div>
-		<div>
-			<h4 className="ml-[60px] mt-3 mb-4 text-xs uppercase">others 2</h4>
-			{others2.map((item) => (
-				<NavLink
-					key={item.title}
-					title={item.title}
-					slug={item.slug}
-					icon={stringToComponent(item.iconName)}
-				/>
-			))}
-		</div>
-	</ul>
-);
+			<div>
+				<h4 className="ml-[60px] mt-3 mb-4 text-xs uppercase">others 1</h4>
+				{others1.map((item) => (
+					<NavLink
+						key={item.title}
+						title={item.title}
+						slug={item.slug}
+						icon={stringToComponent(item.iconName)}
+						isActive={item.title === headerTitle}
+						value={item.title}
+						handleClick={handleClick}
+					/>
+				))}
+			</div>
+			<div>
+				<h4 className="ml-[60px] mt-3 mb-4 text-xs uppercase">others 2</h4>
+				{others2.map((item) => (
+					<NavLink
+						key={item.title}
+						title={item.title}
+						slug={item.slug}
+						icon={stringToComponent(item.iconName)}
+						isActive={item.title === headerTitle}
+						value={item.title}
+						handleClick={handleClick}
+					/>
+				))}
+			</div>
+		</ul>
+	);
+};
 
 export default Navbar;

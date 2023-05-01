@@ -32,7 +32,7 @@ const Layout = ({ children }: Props) => {
 				className="flex-1 min-w-0 overflow-auto ml-[60px] mr-[20px] md:mr-[40px] lg:mx-[60px]"
 				id="page-wrap"
 			>
-				<Header title="Dashboard" />
+				<Header />
 				{children}
 			</main>
 		</div>
